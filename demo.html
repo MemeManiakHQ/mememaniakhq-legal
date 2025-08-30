@@ -3,33 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>MememaniakHQ TikTok Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; font-size: 16px; margin: 10px; }
+    #status { margin-top: 20px; font-weight: bold; }
+  </style>
 </head>
 <body>
   <h1>MememaniakHQ TikTok Integration Demo</h1>
 
   <!-- Login knop -->
-<a href="https://www.tiktok.com/v2/auth/authorize/?client_key=sbawv1nn9v2i8u15f&scope=user.info.basic,video.upload,video.publish&response_type=code&redirect_uri=https%3A%2F%2Fmememaniakhq.github.io%2Fmememaniakhq-legal%2Fcallback.html">
-  <button>Login with TikTok</button>
-</a>
+  <a href="https://www.tiktok.com/v2/auth/authorize/?client_key=sbawv1nn9v2i8u15f7&scope=user.info.basic&response_type=code&redirect_uri=https%3A%2F%2Fmememaniakhq.github.io%2Fmememaniakhq-legal%2Fcallback.html
+">
+    <button>Login with TikTok (Sandbox)</button>
+  </a>
 
-
-  <!-- Placeholder voor upload -->
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" id="videoFile" accept="video/mp4" />
-    <button type="button" onclick="uploadVideo()">Upload Video</button>
-  </form>
+  <!-- Dummy upload/publish -->
+  <div>
+    <input type="file" id="videoFile" name="video" accept="video/mp4" />
+    <button onclick="dummyUpload()">Upload & Publish Video</button>
+  </div>
 
   <p id="status"></p>
 
   <script>
-    async function uploadVideo() {
+    function dummyUpload() {
+      const fileInput = document.getElementById("videoFile");
+      if (!fileInput.files.length) {
+        alert("Select a video file first!");
+        return;
+      }
+
       document.getElementById("status").innerText = "Uploading video...";
 
-      // Hier roep je straks jouw backend script aan dat via de TikTok API uploadt
-      // Voor de demo kan dit een dummy fetch zijn
-      await new Promise(r => setTimeout(r, 2000));
-
-      document.getElementById("status").innerText = "✅ Video uploaded to TikTok!";
+      // Simuleer upload + publish flow
+      setTimeout(() => {
+        document.getElementById("status").innerText = "✅ Video uploaded & published (simulated)";
+      }, 2000);
     }
   </script>
 </body>
